@@ -1,4 +1,4 @@
-package com.klayrocha.jmsproducer.vo;
+package com.klayrocha.jmsconsumer.vo;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import org.modelmapper.ModelMapper;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.klayrocha.jmsproducer.model.Vehicle;
+import com.klayrocha.jmsconsumer.model.VehicleHist;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -44,7 +44,7 @@ public class VehicleVO implements Serializable {
 	@JsonProperty("operation")
 	private String operation;
 
-	public static VehicleVO create(Vehicle vehicle) {
+	public static VehicleVO create(VehicleHist vehicle) {
 		return new ModelMapper().map(vehicle, VehicleVO.class);
 	}
 

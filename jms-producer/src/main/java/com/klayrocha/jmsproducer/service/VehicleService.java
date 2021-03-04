@@ -17,8 +17,11 @@ public class VehicleService {
 	private final VehicleSendMessage vehicleSendMessage;
 
 	public VehicleVO create(VehicleVO vehicleVO) {
+		String user = vehicleVO.getUser();
 		VehicleVO vehicleVoRet = VehicleVO.create(vehicleRepository.save(Vehicle.create(vehicleVO)));
-		vehicleSendMessage.sendMessage(vehicleVO);
+		vehicleVoRet.setUser(user);
+		vehicleVoRet.setOperation("I");
+		vehicleSendMessage.sendMessage(vehicleVoRet);
 		return vehicleVoRet;
 	}
 
