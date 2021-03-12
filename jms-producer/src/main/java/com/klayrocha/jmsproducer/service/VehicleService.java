@@ -17,10 +17,14 @@ public class VehicleService {
 	private final VehicleSendMessage vehicleSendMessage;
 
 	public VehicleVO create(VehicleVO vehicleVO) {
-		String user = vehicleVO.getUser();
+		// Save Mysql
 		VehicleVO vehicleVoRet = VehicleVO.create(vehicleRepository.save(Vehicle.create(vehicleVO)));
-		vehicleVoRet.setUser(user);
+		
+		// Load user
+		vehicleVoRet.setUser(vehicleVO.getUser());
 		vehicleVoRet.setOperation("I");
+		
+		// Send to RabbitMQ
 		vehicleSendMessage.sendMessage(vehicleVoRet);
 		return vehicleVoRet;
 	}
