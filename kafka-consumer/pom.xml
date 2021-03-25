@@ -9,8 +9,7 @@
 		<version>2.4.3</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-
-
+	
 	<groupId>br.com.klayrocha.kafkaconsumer</groupId>
 	<artifactId>kafka-consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
