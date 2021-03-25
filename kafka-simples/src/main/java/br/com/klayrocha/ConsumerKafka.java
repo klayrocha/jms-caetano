@@ -18,11 +18,11 @@ public class ConsumerKafka {
 		properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
 		properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
 		properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-		properties.put(ConsumerConfig.GROUP_ID_CONFIG, "group1");
+		properties.put(ConsumerConfig.GROUP_ID_CONFIG, "group3");
 		properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
 		try (KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(properties)) {
-			consumer.subscribe(Arrays.asList("testJMS"));
+			consumer.subscribe(Arrays.asList("testJMS","topic.test"));
 
 			while (true) {
 				ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(1));

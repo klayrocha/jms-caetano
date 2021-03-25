@@ -18,6 +18,7 @@ public class VehicleReceiveMessage {
 
 	@RabbitListener(queues = { "${vehicle.rabbitmq.queue}" })
 	public void receive(@Payload VehicleVO vehicleVO) {
+		System.out.println("Leu a fila ");
 		vehicleRepository.save(VehicleHist.create(vehicleVO));
 	}
 }
